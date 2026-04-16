@@ -4,6 +4,7 @@ Tries fast APIs first, then uses Brave browser automation as fallback
 """
 
 from datetime import datetime
+import re
 import requests
 import time
 import os
@@ -838,6 +839,8 @@ def scrape_jobbank():
                             continue
 
                         job_url = href if href.startswith('http') else f"https://www.jobbank.gc.ca{href}"
+                        job_id_match = re.search(r'/jobposting/(\d+)', job_url)
+                        job_fingerprint = job_id_match.group(1) if job_id_match else job_url.lower().strip()
 
                         company_elem = card.select_one('li.business') or card.select_one('.business')
                         company = company_elem.get_text(" ", strip=True) if company_elem else 'Unknown Company'
@@ -852,7 +855,7 @@ def scrape_jobbank():
                         if not is_student:
                             continue
 
-                        key = (title.lower().strip(), company.lower().strip(), job_url.lower().strip())
+                        key = (title.lower().strip(), company.lower().strip(), job_fingerprint)
                         if key in seen:
                             continue
                         seen.add(key)

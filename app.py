@@ -287,7 +287,8 @@ def canonicalize_job_url(raw_url):
             filtered_query.append((key, value))
 
         normalized_query = urlencode(sorted(filtered_query))
-        normalized_path = parts.path.rstrip('/') if parts.path != '/' else parts.path
+        normalized_path = parts.path.split(';', 1)[0]
+        normalized_path = normalized_path.rstrip('/') if normalized_path != '/' else normalized_path
         return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), normalized_path, normalized_query, ''))
     except Exception:
         return url.lower()
@@ -683,6 +684,15 @@ def _import_scraped_jobs(jobs, removed_jobs):
         c.execute('SELECT job_key FROM deleted_jobs')
         deleted_keys = {row['job_key'] for row in c.fetchall() if row['job_key']}
 
+    # Prevent re-importing jobs that already exist in the database or were seen in prior scrapes.
+    existing_keys = set()
+    c.execute('SELECT title, company, url FROM jobs')
+    for row in c.fetchall():
+        existing_keys.add(build_job_key(row['title'], row['company'], row['url']))
+
+    c.execute('SELECT job_key FROM seen_jobs')
+    existing_keys.update({row['job_key'] for row in c.fetchall() if row['job_key']})
+
     for job_data in jobs:
         try:
             if not is_valid_job(job_data):
@@ -708,6 +718,9 @@ def _import_scraped_jobs(jobs, removed_jobs):
             if run_key in seen_this_run:
                 duplicates += 1
                 continue
+            if run_key in existing_keys:
+                duplicates += 1
+                continue
             if run_key in deleted_keys:
                 blocked_deleted += 1
                 continue
@@ -727,6 +740,10 @@ def _import_scraped_jobs(jobs, removed_jobs):
                 job_data['posted_date'],
                 1 if job_data.get('is_student_job', False) else 0
             ))
+            c.execute(
+                'INSERT OR IGNORE INTO seen_jobs (job_key) VALUES (?)',
+                (run_key,)
+            )
             count += 1
 
             source_name = str(job_data.get('source', 'Unknown')).strip() or 'Unknown'
