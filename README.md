@@ -26,71 +26,6 @@ my personal job board application for tracking and searching UI/UX, Research, an
 └── README.md                # This file
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package manager)
-
-### Installation
-
-1. Install Python dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Running the Application
-
-Start the Flask development server:
-
-```bash
-python app.py
-```
-
-The application will open at:
-- **http://localhost:5000**
-
-Open this URL in your web browser.
-
-## API Endpoints
-
-### Jobs
-- `GET /api/jobs` - Get all jobs (with optional filters)
-  - Query parameters: `role`, `location`, `search`
-- `GET /api/jobs/:id` - Get a specific job
-- `POST /api/jobs` - Add a new job
-- `PUT /api/jobs/:id` - Update a job
-- `DELETE /api/jobs/:id` - Delete a job
-
-### Applications
-- `POST /api/applications` - Track an application
-- `GET /api/applications/:jobId` - Get application for a job
-
-### Bookmarks
-- `POST /api/bookmarks` - Bookmark a job
-- `DELETE /api/bookmarks/:jobId` - Remove bookmark
-- `GET /api/bookmarks` - Get all bookmarked jobs
-
-### Import
-- `POST /api/import` - Import jobs from CSV
-
-### Filters
-- `GET /api/filters` - Get available filter options
-
-## CSV Format
-
-When importing jobs, use the following CSV format:
-
-```csv
-title,company,location,role,description,url,salary
-UI Designer,Tech Corp,Toronto,UI/UX,Seeking experienced UI designer...,https://example.com/job1,60000-80000
-```
-
-**Required columns**: title, company, location, role  
-**Optional columns**: description, url, salary
-
 ## Database
 
 The application uses SQLite database with the following tables:
@@ -117,17 +52,10 @@ Database file location: `jobs.db` (created automatically on first run)
 
 ## Future Enhancements
 
-- Manual job entry form
-- Email notifications for new matching jobs
-- Job board API integration (Indeed, LinkedIn, etc.)
-- Resume storage and management
-- Interview preparation notes
-- Salary tracking and comparison
+- I think email notifications for new matching jobs would be cool
+- Resume storage and management and maybe auto apply to certain jobs?
+- Salary tracking and comparison with other jobs
 
 ## License
 
-This project is for personal use.
-
-## Support
-
-For issues or improvements, feel free to modify the code according to your needs!
+This project is for me to find jobs faster instead of scrolling for hours.
