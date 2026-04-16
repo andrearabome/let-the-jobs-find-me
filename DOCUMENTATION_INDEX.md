@@ -9,19 +9,19 @@ Complete index of all documentation for the job scraper system.
 ## 📖 By Use Case
 
 ### 👤 For First-Time Users
-1. **Start Here**: [README_SCRAPER.md](README_SCRAPER.md) - Overview & quick start
-2. **Next**: [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md) - Quick commands
-3. **Then**: [SCRAPER_USAGE.md](SCRAPER_USAGE.md) - Detailed usage guide
+1. **Start Here**: README_SCRAPER.md - Overview & quick start
+2. **Next**: SCRAPER_CHEAT_SHEET.md - Quick commands
+3. **Then**: SCRAPER_USAGE.md - Detailed usage guide
 
 ### 👨‍💻 For Developers
-1. **Architecture**: [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
-2. **Reference**: [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md) - Complete technical guide
+1. **Architecture**: SCRAPER_IMPLEMENTATION_SUMMARY.md
+2. **Reference**: SCRAPER_GUIDE.md - Complete technical guide
 3. **Code**: [browser_scraper.py](browser_scraper.py) - Source code
 4. **Tests**: [test_scraper_suite.py](test_scraper_suite.py) - Test suite
 
 ### 🚀 For DevOps/System Admins
 1. **Setup**: [setup_scraper.py](setup_scraper.py) - Automated installation
-2. **Deployment**: [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+2. **Deployment**: DEPLOYMENT_CHECKLIST.md
 3. **Configuration**: [scraper_config.py](scraper_config.py)
 
 ---
@@ -211,145 +211,145 @@ Complete index of all documentation for the job scraper system.
 ### "How do I...?"
 
 **...get started quickly?**
-→ [README_SCRAPER.md](README_SCRAPER.md#quick-start-2-minutes)
+→ README_SCRAPER.md
 
 **...install everything?**
 → [setup_scraper.py](setup_scraper.py) (automatic)
-→ [SCRAPER_USAGE.md](SCRAPER_USAGE.md#installation)
+→ SCRAPER_USAGE.md
 
 **...run a quick test?**
 → `python test_scraper_suite.py --quick`
-→ [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#quick-commands)
+→ SCRAPER_CHEAT_SHEET.md
 
 **...find a specific command?**
-→ [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
+→ SCRAPER_CHEAT_SHEET.md
 
 **...troubleshoot an issue?**
-→ [README_SCRAPER.md](README_SCRAPER.md#troubleshooting)
-→ [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#troubleshooting)
+→ README_SCRAPER.md
+→ SCRAPER_GUIDE.md
 
 **...understand the architecture?**
-→ [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md#how-it-works)
+→ SCRAPER_IMPLEMENTATION_SUMMARY.md
 
 **...deploy to production?**
-→ [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+→ DEPLOYMENT_CHECKLIST.md
 
 **...customize keywords/settings?**
 → [scraper_config.py](scraper_config.py)
-→ [SCRAPER_USAGE.md](SCRAPER_USAGE.md#configuration)
+→ SCRAPER_USAGE.md
 
 **...understand the code?**
 → [browser_scraper.py](browser_scraper.py) (source)
-→ [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md) (documentation)
+→ SCRAPER_GUIDE.md (documentation)
 
 **...see Python examples?**
-→ [SCRAPER_USAGE.md](SCRAPER_USAGE.md#via-python-cli)
-→ [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#python-one-liners)
+→ SCRAPER_USAGE.md
+→ SCRAPER_CHEAT_SHEET.md
 
 **...check database?**
-→ [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#database-queries)
-→ [SCRAPER_USAGE.md](SCRAPER_USAGE.md#database)
+→ SCRAPER_CHEAT_SHEET.md
+→ SCRAPER_USAGE.md
 
 **...run tests?**
 → `python test_scraper_suite.py`
-→ [SCRAPER_USAGE.md](SCRAPER_USAGE.md#testing)
+→ SCRAPER_USAGE.md
 
 ---
 
 ## 📚 Reading Paths
 
 ### Path 1: User Journey (30 minutes)
-1. [README_SCRAPER.md](README_SCRAPER.md) - Understand the system
+1. README_SCRAPER.md - Understand the system
 2. [setup_scraper.py](setup_scraper.py) - Run automated setup
-3. [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md) - Learn quick commands
-4. [SCRAPER_USAGE.md](SCRAPER_USAGE.md) - Explore features
+3. SCRAPER_CHEAT_SHEET.md - Learn quick commands
+4. SCRAPER_USAGE.md - Explore features
 
 ### Path 2: Developer Journey (90 minutes)
-1. [README_SCRAPER.md](README_SCRAPER.md) - Overview
-2. [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md) - Architecture
+1. README_SCRAPER.md - Overview
+2. SCRAPER_IMPLEMENTATION_SUMMARY.md - Architecture
 3. [browser_scraper.py](browser_scraper.py) - Study source code
 4. [test_scraper_suite.py](test_scraper_suite.py) - Review tests
-5. [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md) - Deep dive
+5. SCRAPER_GUIDE.md - Deep dive
 
 ### Path 3: DevOps Journey (60 minutes)
-1. [README_SCRAPER.md](README_SCRAPER.md) - Overview
+1. README_SCRAPER.md - Overview
 2. [setup_scraper.py](setup_scraper.py) - Understand setup
 3. [scraper_config.py](scraper_config.py) - Review configuration
-4. [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) - Production guide
+4. DEPLOYMENT_CHECKLIST.md - Production guide
 
 ### Path 4: Troubleshooting (10 minutes)
-1. [README_SCRAPER.md](README_SCRAPER.md#troubleshooting) - Common issues
-2. [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#quick-troubleshooting-tree) - Issue tree
-3. [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#troubleshooting) - Detailed solutions
+1. README_SCRAPER.md - Common issues
+2. SCRAPER_CHEAT_SHEET.md - Issue tree
+3. SCRAPER_GUIDE.md - Detailed solutions
 
 ---
 
 ## 🔍 Topic Index
 
 ### Architecture
-- [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md#how-it-works)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#architecture)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#architecture)
+- SCRAPER_IMPLEMENTATION_SUMMARY.md
+- SCRAPER_GUIDE.md
+- SCRAPER_USAGE.md
 
 ### Installation
 - [setup_scraper.py](setup_scraper.py) (automated)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#installation)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#installation)
+- SCRAPER_USAGE.md
+- SCRAPER_GUIDE.md
 
 ### Configuration
 - [scraper_config.py](scraper_config.py) (template)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#configuration)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#customization)
+- SCRAPER_USAGE.md
+- SCRAPER_GUIDE.md
 
 ### Testing
 - [test_scraper_suite.py](test_scraper_suite.py) (source)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#testing)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#test-suite)
+- SCRAPER_USAGE.md
+- SCRAPER_GUIDE.md
 
 ### Deployment
-- [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#database-integration)
+- DEPLOYMENT_CHECKLIST.md
+- SCRAPER_USAGE.md
 
 ### Troubleshooting
-- [README_SCRAPER.md](README_SCRAPER.md#troubleshooting)
-- [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#quick-troubleshooting-tree)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#troubleshooting)
+- README_SCRAPER.md
+- SCRAPER_CHEAT_SHEET.md
+- SCRAPER_GUIDE.md
 
 ### API Reference
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#api-endpoints)
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#api-endpoints)
+- SCRAPER_GUIDE.md
+- SCRAPER_USAGE.md
 
 ### Database
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#database)
-- [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md#database-queries)
+- SCRAPER_USAGE.md
+- SCRAPER_CHEAT_SHEET.md
 
 ### Performance
-- [SCRAPER_USAGE.md](SCRAPER_USAGE.md#performance)
-- [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#performance-tips)
+- SCRAPER_USAGE.md
+- SCRAPER_GUIDE.md
 
 ---
 
 ## ✅ Checklist for Different Users
 
 ### Daily Users
-- [ ] Bookmark [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
+- [ ] Bookmark SCRAPER_CHEAT_SHEET.md
 - [ ] Save quick commands
 - [ ] Know where database is (jobs.db)
 
 ### Developers
-- [ ] Read [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
+- [ ] Read SCRAPER_IMPLEMENTATION_SUMMARY.md
 - [ ] Study [browser_scraper.py](browser_scraper.py)
 - [ ] Run [test_scraper_suite.py](test_scraper_suite.py)
 
 ### DevOps/Admins
-- [ ] Review [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+- [ ] Review DEPLOYMENT_CHECKLIST.md
 - [ ] Understand [scraper_config.py](scraper_config.py)
 - [ ] Test [setup_scraper.py](setup_scraper.py)
 
 ### Managers/Product
-- [ ] Understand [README_SCRAPER.md](README_SCRAPER.md)
-- [ ] Review [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md#features)
-- [ ] Track status via [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+- [ ] Understand README_SCRAPER.md
+- [ ] Review SCRAPER_IMPLEMENTATION_SUMMARY.md
+- [ ] Track status via DEPLOYMENT_CHECKLIST.md
 
 ---
 
@@ -358,22 +358,22 @@ Complete index of all documentation for the job scraper system.
 **Total Time to Master**: 2-3 hours
 
 **Level 1: Basics** (30 minutes)
-- Read: [README_SCRAPER.md](README_SCRAPER.md)
+- Read: README_SCRAPER.md
 - Run: `python setup_scraper.py`
 - Try: Click "Fetch Jobs"
 
 **Level 2: Usage** (1 hour)
-- Study: [SCRAPER_USAGE.md](SCRAPER_USAGE.md)
+- Study: SCRAPER_USAGE.md
 - Practice: Python examples
 - Experiment: scraper_config.py
 
 **Level 3: Development** (1.5 hours)
-- Understand: [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
+- Understand: SCRAPER_IMPLEMENTATION_SUMMARY.md
 - Study: [browser_scraper.py](browser_scraper.py) source code
 - Create: Custom scrapers
 
 **Level 4: Production** (1 hour)
-- Follow: [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+- Follow: DEPLOYMENT_CHECKLIST.md
 - Configure: Production settings
 - Deploy: To target environment
 
@@ -382,9 +382,9 @@ Complete index of all documentation for the job scraper system.
 ## 📞 Support Resources
 
 ### Documentation
-- Quick Start: [README_SCRAPER.md](README_SCRAPER.md)
-- Reference: [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
-- Troubleshooting: [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md#troubleshooting)
+- Quick Start: README_SCRAPER.md
+- Reference: SCRAPER_CHEAT_SHEET.md
+- Troubleshooting: SCRAPER_GUIDE.md
 
 ### Testing
 ```bash

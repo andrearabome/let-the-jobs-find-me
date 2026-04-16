@@ -151,20 +151,20 @@ sqlite3 jobs.db "SELECT title, company FROM jobs LIMIT 10;"
 ## 📖 Documentation Guide
 
 ### For Everyone
-- Start: [README_SCRAPER.md](README_SCRAPER.md)
-- Reference: [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
+- Start: README_SCRAPER.md
+- Reference: SCRAPER_CHEAT_SHEET.md
 
 ### For Developers
-- Understanding: [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
-- Full Reference: [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md)
-- Examples: [SCRAPER_USAGE.md](SCRAPER_USAGE.md)
+- Understanding: SCRAPER_IMPLEMENTATION_SUMMARY.md
+- Full Reference: SCRAPER_GUIDE.md
+- Examples: SCRAPER_USAGE.md
 
 ### For DevOps
-- Deployment: [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+- Deployment: DEPLOYMENT_CHECKLIST.md
 - Configuration: [scraper_config.py](scraper_config.py)
 
 ### Navigation
-- [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)
+- DOCUMENTATION_INDEX.md
 
 ---
 
@@ -313,7 +313,7 @@ project/
 - Optional - system has fallback to APIs
 - Download from: https://brave.com/download/
 
-**→ See [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md) for more**
+**→ See SCRAPER_CHEAT_SHEET.md for more**
 
 ---
 
@@ -368,8 +368,8 @@ project/
 ## 📞 Support
 
 ### Quick Help
-1. Check [README_SCRAPER.md](README_SCRAPER.md)
-2. Look up command in [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
+1. Check README_SCRAPER.md
+2. Look up command in SCRAPER_CHEAT_SHEET.md
 3. See troubleshooting section
 4. Browse documentation index
 
@@ -405,13 +405,13 @@ You now have a **complete, production-ready job scraping system** with:
 
 **Choose your path:**
 
-- **👤 First time?** → [README_SCRAPER.md](README_SCRAPER.md)
-- **⚡ Quick commands?** → [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
-- **📖 Learn how to use?** → [SCRAPER_USAGE.md](SCRAPER_USAGE.md)
-- **🔍 Full technical?** → [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md)
-- **🏗️ Understand architecture?** → [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
-- **🚀 Deploy to production?** → [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
-- **🗺️ Find something?** → [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)
+- **👤 First time?** → README_SCRAPER.md
+- **⚡ Quick commands?** → SCRAPER_CHEAT_SHEET.md
+- **📖 Learn how to use?** → SCRAPER_USAGE.md
+- **🔍 Full technical?** → SCRAPER_GUIDE.md
+- **🏗️ Understand architecture?** → SCRAPER_IMPLEMENTATION_SUMMARY.md
+- **🚀 Deploy to production?** → DEPLOYMENT_CHECKLIST.md
+- **🗺️ Find something?** → DOCUMENTATION_INDEX.md
 
 ---
 

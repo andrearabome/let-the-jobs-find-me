@@ -434,7 +434,7 @@ SELECT DATE(created_at), COUNT(*) FROM jobs GROUP BY DATE(created_at);
 
 ### Getting Help
 
-1. Check [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md) for detailed docs
+1. Check SCRAPER_GUIDE.md for detailed docs
 2. Run test suite: `python test_scraper_suite.py`
 3. Check logs for errors
 4. Review configuration in `scraper_config.py`

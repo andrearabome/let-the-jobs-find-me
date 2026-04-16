@@ -19,13 +19,13 @@ python app.py
 We provide comprehensive documentation:
 
 ### For Everyone
-- **[SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)** - Quick commands and reference
-- **[SCRAPER_USAGE.md](SCRAPER_USAGE.md)** - Practical usage guide with examples
+- **SCRAPER_CHEAT_SHEET.md** - Quick commands and reference
+- **SCRAPER_USAGE.md** - Practical usage guide with examples
 
 ### For Developers
-- **[SCRAPER_GUIDE.md](SCRAPER_GUIDE.md)** - Complete technical reference
-- **[SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)** - System overview
-- **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Production deployment guide
+- **SCRAPER_GUIDE.md** - Complete technical reference
+- **SCRAPER_IMPLEMENTATION_SUMMARY.md** - System overview
+- **DEPLOYMENT_CHECKLIST.md** - Production deployment guide
 
 ### Source Code
 - `browser_scraper.py` - Main scraper with multi-source support
@@ -358,9 +358,9 @@ Always verify permission before scraping a website.
 ## 🆘 Support
 
 ### Documentation
-- [Complete Guide](SCRAPER_GUIDE.md)
-- [Usage Guide](SCRAPER_USAGE.md)
-- [Quick Reference](SCRAPER_CHEAT_SHEET.md)
+- Complete Guide
+- Usage Guide
+- Quick Reference
 
 ### Testing
 ```bash
@@ -412,10 +412,10 @@ The job scraper system is:
 ---
 
 **For detailed information, choose your guide:**
-- Quick Start: [SCRAPER_CHEAT_SHEET.md](SCRAPER_CHEAT_SHEET.md)
-- Practical Guide: [SCRAPER_USAGE.md](SCRAPER_USAGE.md)
-- Technical Reference: [SCRAPER_GUIDE.md](SCRAPER_GUIDE.md)
-- System Overview: [SCRAPER_IMPLEMENTATION_SUMMARY.md](SCRAPER_IMPLEMENTATION_SUMMARY.md)
+- Quick Start: SCRAPER_CHEAT_SHEET.md
+- Practical Guide: SCRAPER_USAGE.md
+- Technical Reference: SCRAPER_GUIDE.md
+- System Overview: SCRAPER_IMPLEMENTATION_SUMMARY.md
 
 ---
 
