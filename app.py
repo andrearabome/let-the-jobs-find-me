@@ -98,6 +98,14 @@ def clear_non_bookmarked_jobs():
         print(f"[✗] Error clearing non-bookmarked jobs: {str(e)}")
         return 0
 
+
+@app.route('/api/jobs/clear-non-bookmarked', methods=['POST'])
+def clear_non_bookmarked_jobs_route():
+    """Clear all non-bookmarked jobs so the next scrape starts from bookmarks only."""
+    removed_jobs = clear_non_bookmarked_jobs()
+    invalidate_jobs_cache()
+    return jsonify({'success': True, 'removed_jobs': removed_jobs}), 200
+
 def init_db():
     """Initialize database with tables"""
     conn = sqlite3.connect(DB_PATH)

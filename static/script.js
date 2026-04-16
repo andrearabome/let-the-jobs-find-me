@@ -7,11 +7,18 @@ let searchDebounceTimer = null;
 let currentJobsRequestController = null;
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     removeLegacyStudentUi();
     initializeDarkMode();
-    loadJobs();
     setupEventListeners();
+
+    try {
+        await fetch('/api/jobs/clear-non-bookmarked', { method: 'POST' });
+    } catch (error) {
+        console.error('Error clearing non-bookmarked jobs on load:', error);
+    }
+
+    await loadJobs();
 });
 
 function removeLegacyStudentUi() {
