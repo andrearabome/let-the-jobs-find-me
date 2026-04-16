@@ -8,7 +8,6 @@ my personal job board application for tracking and searching UI/UX, Research, an
 - 📌 **Bookmarking** - Save interesting jobs for later review
 - 📊 **Application Tracking** - Track the status of your applications (interested, applied, interview, offered, etc.)
 - 📝 **Notes** - Add notes to applications
-- 📥 **CSV Import** - Easily import job listings from CSV files
 - 🎯 **Custom Locations** - Pre-configured for Ottawa, Guelph, Toronto, and Mississauga
 - 💼 **Role Categories** - Focused on UI/UX, Research, and Analyst positions
 
