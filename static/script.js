@@ -12,13 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeDarkMode();
     setupEventListeners();
 
-    try {
-        await fetch('/api/jobs/clear-non-bookmarked', { method: 'POST' });
-    } catch (error) {
-        console.error('Error clearing non-bookmarked jobs on load:', error);
-    }
-
-    await loadJobs();
+    await clearNonBookmarkedJobsAndReload();
 });
 
 function removeLegacyStudentUi() {
@@ -62,8 +56,12 @@ function initializeDarkMode() {
 
 function setupEventListeners() {
     // Scrape jobs
+    const refreshJobsBtn = document.getElementById('refreshJobsBtn');
     const scrapeIndeedBtn = document.getElementById('scrapeIndeedBtn');
     const scrapeJobBankBtn = document.getElementById('scrapeJobBankBtn');
+    if (refreshJobsBtn) {
+        refreshJobsBtn.addEventListener('click', () => clearNonBookmarkedJobsAndReload());
+    }
     if (scrapeIndeedBtn) {
         scrapeIndeedBtn.addEventListener('click', () => scrapeJobs('indeed'));
     }
@@ -152,6 +150,17 @@ async function loadJobs() {
             console.error('Error loading jobs:', error);
         }
     }
+}
+
+async function clearNonBookmarkedJobsAndReload() {
+    try {
+        await fetch('/api/jobs/clear-non-bookmarked', { method: 'POST' });
+    } catch (error) {
+        console.error('Error clearing non-bookmarked jobs:', error);
+    }
+
+    currentPage = 1;
+    await loadJobs();
 }
 
 function displayJobs() {
