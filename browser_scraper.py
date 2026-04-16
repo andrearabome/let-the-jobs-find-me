@@ -59,6 +59,12 @@ ENTRY_LEVEL_SEARCH_TERMS = [
     'entry level designer',
     'entry level researcher'
 ]
+INDEED_SEARCH_LOCATIONS = [
+    ONTARIO_SEARCH_LOCATION,
+    'Ottawa',
+    'Mississauga',
+    'Waterloo'
+]
 JOBBANK_SEARCH_TERMS = [
     'summer student',
     'student',
@@ -78,7 +84,8 @@ JOBBANK_SEARCH_LOCATIONS = [
     ONTARIO_SEARCH_LOCATION,
     'Toronto',
     'Mississauga',
-    'Ottawa'
+    'Ottawa',
+    'Guelph'
 ]
 FAST_MODE = os.getenv("SCRAPE_FAST_MODE", "1") == "1"
 REQUEST_TIMEOUT = float(os.getenv("SCRAPE_REQUEST_TIMEOUT", "4.5"))
@@ -242,7 +249,7 @@ def scrape_indeed_api():
 
         # Target student-oriented terms with balanced role coverage.
         search_terms = ENTRY_LEVEL_SEARCH_TERMS
-        locations = [ONTARIO_SEARCH_LOCATION]
+        locations = INDEED_SEARCH_LOCATIONS
 
         jobs = []
         seen = set()
