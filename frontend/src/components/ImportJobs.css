@@ -1,0 +1,106 @@
+.import-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.import-panel h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.import-section {
+  margin-bottom: 20px;
+}
+
+.import-info {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.file-input-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: block;
+  padding: 12px 16px;
+  background: #667eea;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.file-input-label:hover {
+  background: #5568d3;
+}
+
+.file-input:disabled + .file-input-label {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.import-message {
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.import-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.import-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.file-format-help {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #666;
+  margin: 0;
+  border-left: 3px solid #667eea;
+}
+
+.file-format-help strong {
+  color: #333;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.add-manually-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.add-manually-btn:hover {
+  background: #e0e0e0;
+  border-color: #667eea;
+}

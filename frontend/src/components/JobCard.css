@@ -1,0 +1,99 @@
+.job-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid #667eea;
+}
+
+.job-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.job-card-title h3 {
+  color: #333;
+  margin-bottom: 4px;
+  font-size: 1.2em;
+}
+
+.company-name {
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.bookmark-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #ddd;
+  transition: all 0.2s ease;
+  padding: 4px;
+}
+
+.bookmark-btn:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+.bookmark-btn.bookmarked {
+  color: #ffd700;
+}
+
+.job-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.meta-item {
+  font-size: 0.9em;
+  color: #666;
+  display: inline-flex;
+  align-items: center;
+}
+
+.meta-item.role {
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: #555;
+}
+
+.job-description {
+  color: #666;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.job-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.posted-date {
+  color: #999;
+  font-size: 0.85em;
+}
+
+.view-details {
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.9em;
+}

@@ -1,0 +1,304 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 25px;
+  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.modal-company {
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  opacity: 0.8;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 8px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.detail-item {
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.detail-item strong {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.detail-item p {
+  color: #666;
+  margin: 0;
+}
+
+.job-full-description {
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.job-url-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #667eea;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.job-url-btn:hover {
+  background: #764ba2;
+}
+
+.application-display {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.application-display p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.status-badge.interested {
+  background: #e7f3ff;
+  color: #0066cc;
+}
+
+.status-badge.applied {
+  background: #fff7e7;
+  color: #cc8800;
+}
+
+.status-badge.interview {
+  background: #ffe7f3;
+  color: #cc0066;
+}
+
+.status-badge.offered {
+  background: #e7ffe7;
+  color: #00cc00;
+}
+
+.status-badge.rejected {
+  background: #ffe7e7;
+  color: #cc0000;
+}
+
+.status-badge.accepted {
+  background: #d4edda;
+  color: #155724;
+}
+
+.no-application {
+  color: #999;
+  font-style: italic;
+}
+
+.application-form {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: #667eea;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #5568d3;
+}
+
+.cancel-btn {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #d0d0d0;
+}
+
+.edit-btn {
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.edit-btn:hover {
+  background: #5568d3;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 10px;
+  padding: 20px 25px;
+  border-top: 1px solid #f0f0f0;
+  background: #f9f9f9;
+  border-radius: 0 0 8px 8px;
+}
+
+.bookmark-action,
+.delete-btn {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ddd;
+  background: white;
+  color: #666;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.bookmark-action:hover {
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+.bookmark-action.bookmarked {
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+.delete-btn {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.delete-btn:hover {
+  background: #ffe0e0;
+}

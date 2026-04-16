@@ -1,0 +1,17 @@
+{
+  "name": "job-board",
+  "version": "1.0.0",
+  "description": "Personal job board for UI/UX, Research, and Analyst roles",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend:dev": "cd frontend && npm start",
+    "backend:build": "cd backend && npm run build",
+    "frontend:build": "cd frontend && npm run build",
+    "build": "npm run backend:build && npm run frontend:build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

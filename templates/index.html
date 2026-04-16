@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let The Jobs Find Me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v={{ cache_bust }}">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-top">
+            <div>
+                <h1>donoteven needs a job !</h1>
+                <p> UI/UX, Research, and Analyst opportunities for Mr Andre Arabome</p>
+            </div>
+            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode">🌙</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="scrape-panel">
+                <h3>Scrape Jobs</h3>
+                <p class="scrape-info">Choose a source to scrape student jobs from your target cities.</p>
+                <button id="scrapeIndeedBtn" class="scrape-btn">Scrape Indeed</button>
+                <button id="scrapeJobBankBtn" class="scrape-btn">Scrape JobBank</button>
+                <div id="scrapeMessage" class="scrape-message" style="display:none;"></div>
+                <div id="scrapeProgress" class="scrape-progress" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>Scraping jobs... this may take a minute</p>
+                </div>
+            </div>
+
+            <div class="filters-panel">
+                <h3>Filters</h3>
+                
+                <div class="filter-group">
+                    <label for="search">Search</label>
+                    <input type="text" id="search" placeholder="Job title or company..." class="filter-input">
+                </div>
+
+                <div class="filter-group">
+                    <label for="roleFilter">Role Type</label>
+                    <select id="roleFilter" class="filter-select">
+                        <option value="">All Roles</option>
+                        <option value="UI/UX">UI/UX</option>
+                        <option value="Research">Research</option>
+                        <option value="Analyst">Analyst</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="locationFilter">Location</label>
+                    <select id="locationFilter" class="filter-select">
+                        <option value="">All Locations</option>
+                        <option value="Ottawa">Ottawa</option>
+                        <option value="Guelph">Guelph</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Mississauga">Mississauga</option>
+                        <option value="Kitchener">Kitchener</option>
+                        <option value="Waterloo">Waterloo</option>
+                    </select>
+                </div>
+
+                <button id="clearFiltersBtn" class="clear-filters-btn" style="display:none;">Clear Filters</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="jobs-header">
+                <div>
+                    <h2>
+                        <span id="jobsTitle">All Jobs</span>
+                        <span class="job-count" id="jobCount">(0)</span>
+                    </h2>
+                </div>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="all">All Jobs</button>
+                    <button class="toggle-btn" data-view="bookmarked">Bookmarked</button>
+                </div>
+            </div>
+            
+            <div id="jobsList" class="job-list">
+                <div class="empty-state">No jobs found. Try importing some jobs!</div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div id="paginationControls" class="pagination-controls" style="display:none;">
+                <button id="prevBtn" class="pagination-btn" onclick="previousPage()">← Previous</button>
+                <div class="page-info">
+                    <span>Page <span id="currentPageNum">1</span> of <span id="totalPagesNum">1</span></span>
+                </div>
+                <button id="nextBtn" class="pagination-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Job Modal -->
+    <div id="jobModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-company" id="modalCompany"></p>
+                </div>
+                <button class="close-btn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Job Details</h3>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <strong>Location:</strong>
+                            <p id="modalLocation"></p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Role Type:</strong>
+                            <p id="modalRole"></p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Salary:</strong>
+                            <p id="modalSalary">-</p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Posted Date:</strong>
+                            <p id="modalPostedDate"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section" id="descriptionSection" style="display:none;">
+                    <h3>Description</h3>
+                    <p class="job-full-description" id="modalDescription"></p>
+                </div>
+
+                <div class="modal-section" id="urlSection" style="display:none;">
+                    <a id="modalUrl" href="#" target="_blank" rel="noopener noreferrer" class="job-url-btn">
+                        View Original Posting →
+                    </a>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Application Tracking</h3>
+                    <div id="applicationDisplay" class="application-display">
+                        <p class="no-application">No application tracked yet</p>
+                        <button class="edit-btn" id="trackAppBtn">Track Application</button>
+                    </div>
+                    <div id="applicationForm" class="application-form" style="display:none;">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="appStatus">
+                                <option value="interested">Interested</option>
+                                <option value="applied">Applied</option>
+                                <option value="interview">Interview Scheduled</option>
+                                <option value="offered">Offer Received</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="accepted">Accepted</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Applied Date</label>
+                            <input type="date" id="appliedDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea id="appNotes" placeholder="Add notes about this application..." rows="4"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="save-btn" id="saveAppBtn">Save</button>
+                            <button class="cancel-btn" id="cancelAppBtn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="bookmark-action" id="bookmarkBtn">☆ Bookmark</button>
+                <button class="delete-btn" id="deleteJobBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmark Remove Confirmation Modal -->
+    <div id="bookmarkConfirmModal" class="confirm-modal-overlay" style="display:none;">
+        <div class="confirm-modal-content">
+            <h3>Remove Bookmark?</h3>
+            <p id="bookmarkConfirmMessage">Do you want to remove this job from bookmarks?</p>
+            <div class="confirm-modal-actions">
+                <button id="bookmarkConfirmYes" class="confirm-btn yes">Yes, Remove</button>
+                <button id="bookmarkConfirmNo" class="confirm-btn no">No, Keep It</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <footer class="site-description" aria-label="About this website">
+        <div class="site-description-inner">
+            <h3>About Let The Jobs Find Me</h3>
+            <p>
+                This website helps surface student and internship opportunities in Ottawa, Kitchener, Waterloo,
+                Guelph, Mississauga, and Toronto. It focuses on UI/UX, Research, and Analyst roles by pulling
+                fresh listings from Indeed and Job Bank, while giving you filters, bookmarks, and quick
+                application tracking in one place.
+            </p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}?v={{ cache_bust }}"></script>
+</body>
+</html>
