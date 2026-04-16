@@ -59,12 +59,34 @@ ENTRY_LEVEL_SEARCH_TERMS = [
     'entry level designer',
     'entry level researcher'
 ]
+JOBBANK_SEARCH_TERMS = [
+    'summer student',
+    'student',
+    'intern',
+    'internship',
+    'entry level',
+    'junior',
+    'graduate',
+    'new grad',
+    'research assistant',
+    'ux intern',
+    'user research intern',
+    'data analyst',
+    'product design intern'
+]
 FAST_MODE = os.getenv("SCRAPE_FAST_MODE", "1") == "1"
 REQUEST_TIMEOUT = float(os.getenv("SCRAPE_REQUEST_TIMEOUT", "4.5"))
 TOTAL_SCRAPE_SECONDS = float(os.getenv("SCRAPE_TOTAL_TIMEOUT", "45"))
 SOURCE_BUDGET_SECONDS = float(os.getenv("SCRAPE_SOURCE_TIMEOUT", "12"))
 FAST_SOURCE_JOB_TARGET = int(os.getenv("SCRAPE_SOURCE_JOB_TARGET", "24"))
 PARALLEL_SOURCES = os.getenv("SCRAPE_PARALLEL_SOURCES", "1") == "1"
+
+_jobbank_terms_override = [
+    term.strip() for term in os.getenv("JOBBANK_SEARCH_TERMS", "").split(",")
+    if term.strip()
+]
+if _jobbank_terms_override:
+    JOBBANK_SEARCH_TERMS = _jobbank_terms_override
 
 
 def _sleep_short(delay_normal=0.3):
@@ -801,7 +823,7 @@ def scrape_jobbank():
         }
 
         # Use the Ontario search URL format that Job Bank currently serves.
-        search_terms = ['summer student', 'intern', 'entry level', 'junior', 'graduate']
+        search_terms = JOBBANK_SEARCH_TERMS[:8] if FAST_MODE else JOBBANK_SEARCH_TERMS
 
         jobs = []
         seen = set()
