@@ -74,6 +74,12 @@ JOBBANK_SEARCH_TERMS = [
     'data analyst',
     'product design intern'
 ]
+JOBBANK_SEARCH_LOCATIONS = [
+    ONTARIO_SEARCH_LOCATION,
+    'Toronto',
+    'Mississauga',
+    'Ottawa'
+]
 FAST_MODE = os.getenv("SCRAPE_FAST_MODE", "1") == "1"
 REQUEST_TIMEOUT = float(os.getenv("SCRAPE_REQUEST_TIMEOUT", "4.5"))
 TOTAL_SCRAPE_SECONDS = float(os.getenv("SCRAPE_TOTAL_TIMEOUT", "45"))
@@ -87,6 +93,13 @@ _jobbank_terms_override = [
 ]
 if _jobbank_terms_override:
     JOBBANK_SEARCH_TERMS = _jobbank_terms_override
+
+_jobbank_locations_override = [
+    location.strip() for location in os.getenv("JOBBANK_SEARCH_LOCATIONS", "").split(",")
+    if location.strip()
+]
+if _jobbank_locations_override:
+    JOBBANK_SEARCH_LOCATIONS = _jobbank_locations_override
 
 
 def _sleep_short(delay_normal=0.3):
@@ -833,76 +846,81 @@ def scrape_jobbank():
             if _source_budget_reached(started_at):
                 break
             query = quote_plus(term)
-            url = f"https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring={query}&locationstring=ontario&locationparam="
+            for location in JOBBANK_SEARCH_LOCATIONS:
+                if _source_budget_reached(started_at):
+                    break
 
-            try:
-                response = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-                if response.status_code != 200:
-                    continue
+                loc = quote_plus(location)
+                url = f"https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring={query}&locationstring={loc}&locationparam="
 
-                soup = BeautifulSoup(response.text, 'html.parser')
-
-                # Modern Job Bank search results use resultJobItem anchors inside resultJobItem articles.
-                job_cards = soup.select('a.resultJobItem')
-                if not job_cards:
-                    job_cards = soup.select('article.action-buttons > a[href*="/jobposting/"]')
-                if not job_cards:
-                    job_cards = soup.select('.results-jobs a[href*="/jobposting/"]')
-
-                for card in job_cards[:25]:
-                    try:
-                        title_elem = card.select_one('h3.title .noctitle') or card.select_one('h3.title') or card.select_one('.noctitle')
-                        if not title_elem:
-                            continue
-
-                        title = title_elem.get_text(" ", strip=True)
-                        href = card.get('href', '')
-                        if not title or not href:
-                            continue
-
-                        job_url = href if href.startswith('http') else f"https://www.jobbank.gc.ca{href}"
-                        job_id_match = re.search(r'/jobposting/(\d+)', job_url)
-                        job_fingerprint = job_id_match.group(1) if job_id_match else job_url.lower().strip()
-
-                        company_elem = card.select_one('li.business') or card.select_one('.business')
-                        company = company_elem.get_text(" ", strip=True) if company_elem else 'Unknown Company'
-
-                        location_elem = card.select_one('li.location') or card.select_one('.location')
-                        job_location = location_elem.get_text(" ", strip=True) if location_elem else 'Ontario'
-
-                        description = card.get_text(" ", strip=True)
-
-                        # Apply student/entry-level filter.
-                        is_student = include_student_or_entry_context(title, description, term)
-                        if not is_student:
-                            continue
-
-                        key = (title.lower().strip(), company.lower().strip(), job_fingerprint)
-                        if key in seen:
-                            continue
-                        seen.add(key)
-
-                        jobs.append({
-                            "title": title[:100],
-                            "company": company[:80],
-                            "location": job_location[:80],
-                            "role": infer_role(f"{title} {term}", description),
-                            "description": description[:300],
-                            "url": job_url,
-                            "posted_date": datetime.now().isoformat(),
-                            "is_student_job": 1 if is_student else 0,
-                            "source": "Job Bank"
-                        })
-                        if FAST_MODE and len(jobs) >= FAST_SOURCE_JOB_TARGET:
-                            return randomize_jobs(jobs)
-                    except Exception:
+                try:
+                    response = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+                    if response.status_code != 200:
                         continue
 
-            except Exception:
-                continue
+                    soup = BeautifulSoup(response.text, 'html.parser')
 
-            # Avoid hammering Job Bank
-            _sleep_short(0.3)
+                    # Modern Job Bank search results use resultJobItem anchors inside resultJobItem articles.
+                    job_cards = soup.select('a.resultJobItem')
+                    if not job_cards:
+                        job_cards = soup.select('article.action-buttons > a[href*="/jobposting/"]')
+                    if not job_cards:
+                        job_cards = soup.select('.results-jobs a[href*="/jobposting/"]')
+
+                    for card in job_cards[:25]:
+                        try:
+                            title_elem = card.select_one('h3.title .noctitle') or card.select_one('h3.title') or card.select_one('.noctitle')
+                            if not title_elem:
+                                continue
+
+                            title = title_elem.get_text(" ", strip=True)
+                            href = card.get('href', '')
+                            if not title or not href:
+                                continue
+
+                            job_url = href if href.startswith('http') else f"https://www.jobbank.gc.ca{href}"
+                            job_id_match = re.search(r'/jobposting/(\d+)', job_url)
+                            job_fingerprint = job_id_match.group(1) if job_id_match else job_url.lower().strip()
+
+                            company_elem = card.select_one('li.business') or card.select_one('.business')
+                            company = company_elem.get_text(" ", strip=True) if company_elem else 'Unknown Company'
+
+                            location_elem = card.select_one('li.location') or card.select_one('.location')
+                            job_location = location_elem.get_text(" ", strip=True) if location_elem else location
+
+                            description = card.get_text(" ", strip=True)
+
+                            # Apply student/entry-level filter.
+                            is_student = include_student_or_entry_context(title, description, term)
+                            if not is_student:
+                                continue
+
+                            key = (title.lower().strip(), company.lower().strip(), job_fingerprint)
+                            if key in seen:
+                                continue
+                            seen.add(key)
+
+                            jobs.append({
+                                "title": title[:100],
+                                "company": company[:80],
+                                "location": job_location[:80],
+                                "role": infer_role(f"{title} {term}", description),
+                                "description": description[:300],
+                                "url": job_url,
+                                "posted_date": datetime.now().isoformat(),
+                                "is_student_job": 1 if is_student else 0,
+                                "source": "Job Bank"
+                            })
+                            if FAST_MODE and len(jobs) >= FAST_SOURCE_JOB_TARGET:
+                                return randomize_jobs(jobs)
+                        except Exception:
+                            continue
+
+                except Exception:
+                    continue
+
+                # Avoid hammering Job Bank
+                _sleep_short(0.3)
 
         if jobs:
             print(f"      Found {len(jobs)} jobs on Job Bank")
